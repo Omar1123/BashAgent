@@ -1,5 +1,6 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+var colors = require('colors')
 
 let health = [
 ];
@@ -17,7 +18,7 @@ async function getHostname() {
 
 async function getPrivateIP() {
 
-  const { stdout, stderr } = await exec('./ip.sh');
+  const { stdout, stderr } = await exec('commands/ip.sh');
 
   if(stderr) {
     return await ' '
@@ -39,7 +40,7 @@ async function getPublicIP() {
 
 async function getOperativeSystem() {
 
-  const { stdout, stderr } = await exec('./version.sh');
+  const { stdout, stderr } = await exec('commands/version.sh');
 
   if(stderr) {
     return await ' '
@@ -72,7 +73,7 @@ async function getArchitecture() {
 
 async function getSwap() {
 
-  const { stdout, stderr } = await exec('./swap.sh');
+  const { stdout, stderr } = await exec('commands/swap.sh');
 
   if(stderr) {
     return await ' '
@@ -83,7 +84,7 @@ async function getSwap() {
 
 async function getLoadAverage() {
 
-  const { stdout, stderr } = await exec('./average.sh');
+  const { stdout, stderr } = await exec('commands/average.sh');
 
   if(stderr) {
     return await ' '
@@ -116,7 +117,7 @@ async function getShutdown() {
 
 async function getMemoryConsuming() {
 
-  const { stdout, stderr } = await exec('./memory.sh');
+  const { stdout, stderr } = await exec('commands/memory.sh');
 
   if(stderr) {
     return await ' '
@@ -127,7 +128,7 @@ async function getMemoryConsuming() {
 
 async function getCPUResource() {
 
-  const { stdout, stderr } = await exec('./cpu.sh');
+  const { stdout, stderr } = await exec('commands/cpu.sh');
 
   if(stderr) {
     return await ' '
@@ -172,7 +173,7 @@ async function getDiskStatus() {
 
 async function getDfFree() {
 
-  const { stdout, stderr } = await exec('./dfFree.sh');
+  const { stdout, stderr } = await exec('commands/dfFree.sh');
 
   if(stderr) {
     return await ' '
@@ -183,7 +184,7 @@ async function getDfFree() {
 
 async function getDfBussy() {
 
-  const { stdout, stderr } = await exec('./dfBussy.sh');
+  const { stdout, stderr } = await exec('commands/dfBussy.sh');
 
   if(stderr) {
     return await ' '
@@ -194,7 +195,7 @@ async function getDfBussy() {
 
 async function getMemBusy() {
 
-  const { stdout, stderr } = await exec('./memBusy.sh');
+  const { stdout, stderr } = await exec('commands/memBusy.sh');
 
   if(stderr) {
     return await ' '
@@ -205,7 +206,7 @@ async function getMemBusy() {
 
 async function getMemFree() {
 
-  const { stdout, stderr } = await exec('./memFree.sh');
+  const { stdout, stderr } = await exec('commands/memFree.sh');
 
   if(stderr) {
     return await ' '
@@ -260,7 +261,7 @@ module.exports = async(req, res) => {
     "diskStatus" : diskStatus
   });
 
-  console.log('Finish scan')
+  console.log('       [' + '*'.cyan + '] Instruction received')
   res.status(200).json(health)
   health = [];
 }
