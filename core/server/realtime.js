@@ -23,7 +23,7 @@ module.exports = async(req, res) => {
     "result" : commandLine
   });
 
-  console.log('Finish real time')
+  console.log('       [' + '*'.cyan + '] Instruction received')
   res.status(200).json(health)
   health = [];
 }

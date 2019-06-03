@@ -261,7 +261,7 @@ module.exports = async(req, res) => {
     "diskStatus" : diskStatus
   });
 
-  console.log('       [' + '*'.cyan + '] Instruction received')
+  console.log('       [' + '*'.cyan + '] Health Check Finish')
   res.status(200).json(health)
   health = [];
 }
