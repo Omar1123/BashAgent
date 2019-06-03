@@ -27,8 +27,6 @@ let server = app.listen(process.env.PORT || 3050, function () {
     let port = server.address().port;
 
     console.log('   ')
-    console.log('   ')
-    console.log('   ')
     console.log('                (///(###(///(             '.red)
     console.log('               (*           *(            '.red)
     console.log('               /             /            '.red)
@@ -52,9 +50,9 @@ let server = app.listen(process.env.PORT || 3050, function () {
     console.log('   Server Monitoring Module'.yellow + ' ON'.green)
     console.log('   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -'.white)
     console.log('   ')
-    console.log('   -> '.green + 'Health Check: '.white + 'http://'.cyan +  internalIp.v4.sync().cyan + colors.cyan(port) + '/server/health/check'.cyan)
-    console.log('   -> '.green + 'Web Shell : '.white + 'http://'.cyan +  internalIp.v4.sync().cyan + colors.cyan(port) + '/server/health/command'.cyan)
+    console.log('   -> '.green + 'Health Check: '.white + 'http://'.cyan +  internalIp.v4.sync().cyan  + ':'.cyan +  colors.cyan(port) + '/server/health/check'.cyan)
+    console.log('   -> '.green + 'Web Shell : '.white + 'http://'.cyan +  internalIp.v4.sync().cyan  + ':'.cyan + colors.cyan(port) + '/server/health/command'.cyan)
     console.log('   ')
     console.log('   [' + '+'.green + '] Waiting for remote instructions')
-    console.log('   ')  
+    console.log('   ')
 });
